@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday คุณย่า</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;500&display=swap');
+
+        body {
+            background-color: #fff0f3;
+            margin: 0;
+            font-family: 'Kanit', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* ตกแต่งหัวใจลอยๆ */65
+        .heart-bg {
+            position: fixed;
+            top: -10%;
+            color: #ffb7c5;
+            font-size: 20px;
+            user-select: none;
+            z-index: -1;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh); }
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px 20px;
+            z-index: 1;
+        }
+
+        .cake {
+            font-size: 120px;
+            cursor: pointer;
+            transition: 0.3s;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+        }
+
+        .cake:hover { transform: scale(1.1) rotate(5deg); }
+
+        /* ส่วนแสดงข้อความและรูปภาพ */
+        #greeting-card {
+            display: none;
+            margin-top: 30px;
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            border: 5px solid #ffcad4;
+            box-shadow: 0 15px 30px rgba(255, 182, 193, 0.4);
+            max-width: 600px;
+            animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 { color: #ff4d6d; margin-bottom: 5px; }
+        .heart-icon { color: #ff4d6d; font-size: 24px; }
+
+        /* ตกแต่งกรอบรูป */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .photo-frame {
+            background: white;
+            padding: 8px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border: 2px solid #ffe5ec;
+            transition: 0.3s;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-5px) rotate(3deg);
+            border-color: #ffb7c5;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .instruction { color: #ff758f; font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="cake" onclick="showGreeting()">🎂</div>
+    <div class="instruction">กดที่เค้กเพื่อดูเซอร์ไพรส์คุณย่า ❤️</div>
+
+    <div id="greeting-card">
+        <div class="heart-icon">❤️❤️❤️❤️❤️</div>
+        <h1>สุขสันต์วันเกิดคุณย่าครับ</h1>
+        <p>ขอให้คุณย่าสุขภาพแข็งแรง ยิ้มเก่งๆ แบบนี้ทุกวันเลยนะ<br>รักคุณย่าที่สุดในโลก!</p>
+        
+        <div class="photo-grid">
+            <!-- ใส่ชื่อไฟล์รูปภาพของคุณตรง src -->
+            <div class="photo-frame"><img src=photo1.jpg.JPEG" alt="รูปคุณย่า 1"></div>
+            <div class="photo-frame"><img src="to2".jpphog" alt="รูปคุณย่า 2"></div>
+            <div class="photo-frame"><img src= https://images.dmc.tv/wallpaper/raw/4638.jpgalt="รูปคุณย่า 3"></div>
+            <div class="photo-frame"><img src="photo4.jpg" alt="รูปคุณย่า 4"></div>
+            <div class="photo-frame"><img src="photo5.jpg" alt="รูปคุณย่า 5"></div>
+            <div class="photo-frame"><img src="photo6.jpg" alt="รูปคุณย่า 6"></div>
+        </div>
+        <div style="margin-top:20px;" class="heart-icon">💖💖💖💖💖</div>
+    </div>
+</div>
+
+<script>
+    // สร้างหัวใจลอยๆ กระจายทั่วจอ
+    function createHearts() {
+        for (let i = 0; i < 30; i++) {
+            let heart = document.createElement('div');
+            heart.className = 'heart-bg';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            heart.style.opacity = Math.random();
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            document.body.appendChild(heart);
+        }
+    }
+
+    function showGreeting() {
+        document.getElementById('greeting-card').style.display = 'block';
+        document.querySelector('.cake').innerHTML = '🎁';
+        createHearts(); // เมื่อกดแล้วหัวใจจะร่วงลงมาเยอะขึ้น
+    }
+
+    // เริ่มสร้างหัวใจบางส่วนตอนโหลดหน้าเว็บ
+    createHearts();
+</script>
+
+</body>
+</html>
